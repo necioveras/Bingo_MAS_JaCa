@@ -2,6 +2,9 @@
 
 /* Initial beliefs and rules */
 
+sizeCard(math.random(9)+1).
+maxNumberToSort(math.random(99)+1).
+
 /* Initial goals */
 
 !create.
@@ -23,4 +26,8 @@
 	
 //Signal status
 +status(S) : 	S == "ready" <- 
-	start.	
+	start.		
+
++!kqml_received(Sender, askOne, buildCard, Response) : sizeCard(Size)  & maxNumberToSort(Max)  <-		
+	ias.buildCard(Size, Max, Card);    	
+	.send(Sender, tell, Card, Response).	

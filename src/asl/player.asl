@@ -10,15 +10,11 @@
 
 +!participate: true<- 
 	?myArtifact (ID);	
-	focus(ID);
-	sell;   //buy	- adquire uma carteça
-	println("Comprei uma cartela ...no bingo:", ID);
-	ias.buildCard(5, 40, Card);	    
-	.concat("Cartela:", Card,S);	
-     println(S);
-     +myCard(Card);                                   //adiciona uma nova crença com a cartela do Bingo
-     Hit = 0;
-     +myHits(Hit).                                      //adiciona uma nova crença com o total de acertos
+	focus(ID);		
+	.send(owner,askOne, buildCard, Card);
+	+myCard(Card);
+	sell;   //buy	- informa que adquiriu uma cartela
+	println("Estou no bingo! Registrei minha cartela.").	
 	
 +?myArtifact(C) : true <-
 	lookupArtifact("b0", C).	
@@ -29,6 +25,12 @@
 	!participate.	
    
 //Perceptions of the signals
+
++myCard(Card) <-
+	.concat("Cartela:", Card,S);	
+     println(S);
+     Hit = 0;
+     +myHits(Hit).                                      //adiciona uma nova crença com o total de acertos
 	
 +status(S) : S == "sorted" & myCard(Card) & myHits(Hit) <-	
 	?numSorted(V);

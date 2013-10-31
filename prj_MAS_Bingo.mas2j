@@ -3,7 +3,7 @@ MAS prj_MAS_Bingo {
 	environment: c4jason.CartagoEnvironment
 
 	agents:			
-		owner owner agentArchClass c4jason.CAgentArch;
+		owner  owner agentArchClass c4jason.CAgentArch;
 		player1 player agentArchClass c4jason.CAgentArch;
 		player2 player agentArchClass c4jason.CAgentArch;
 		player3 player agentArchClass c4jason.CAgentArch;
